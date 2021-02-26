@@ -163,6 +163,11 @@ public:
 	// Dumpt the current register configuration to serial.
 	void DumpRegisters();
 	
+	// Set ADC Gain.
+	// @param gain   Target gain, [0 .. 255] for [-119.25..+71.25] [dB], in increments of 0.75. Default (0dB) is 160.
+	// @return True on success, false on failure.
+	bool SetADCGain(uint8_t gain);
+	
 protected:
 	bool WriteReg(uint8_t reg, uint16_t val);
 	uint16_t ReadReg(uint8_t reg);

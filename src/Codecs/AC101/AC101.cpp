@@ -375,3 +375,12 @@ bool AC101::SetMode(Mode_t mode)
 	}
 	return ok;
 }
+
+bool AC101::SetADCGain(uint8_t gain)
+{
+	uint16_t val = 0;
+	val = uint16_t(gain) << 8; 
+	val += gain;
+	Serial.printf("ADC Gain Reg Written: %d\n",val);
+	return WriteReg(ADC_VOL_CTRL, val);
+}
